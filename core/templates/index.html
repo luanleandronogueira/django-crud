@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python CRUD</title>
+</head>
+<body>
+    <h3>Hello World!</h3>
+
+    <p>
+        {% for pessoa in pessoas %}
+            <li>{{pessoa.id}} - {{pessoa.nome_pessoa}} - <a href="{% url 'editar' pessoa.id %}">Editar</a> - <a href="{% url 'excluir' pessoa.id %}">Excluir</a></li>
+        {%endfor%}
+
+    </p>
+    <form action="{% url 'salvar' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nome_pessoa">
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
